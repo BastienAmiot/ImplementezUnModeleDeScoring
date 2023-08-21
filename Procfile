@@ -1,2 +1,2 @@
 api: python API.py
-dashboard : streamlit run app.py
+dashboard: streamlit run app.py
