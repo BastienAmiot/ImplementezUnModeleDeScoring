@@ -31,7 +31,7 @@ st.markdown("""
 @st.cache_data
 def get_data():
     df = pd.read_csv('data/main_test.zip', compression='zip')
-    df_pie = pd.read_csv('data/application_test.zip', compression='zip')
+    df_pie = pd.read_csv('data/pie_test.zip', compression='zip')
     return df, df_pie
 
 df, df_pie = get_data()
