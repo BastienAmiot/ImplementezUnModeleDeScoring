@@ -1,2 +1,2 @@
-api: python API.py
-dashboard: streamlit run app.py
+web: gunicorn API:app
+web: gunicorn app:app
