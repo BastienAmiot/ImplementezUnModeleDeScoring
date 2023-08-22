@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import pyautogui
+import os
 
 api_url = "http://localhost:5001/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
@@ -215,3 +216,7 @@ if predict_button:
 with st.sidebar:
     if st.button("Reinitialiser"):
         pyautogui.hotkey("ctrl","F5")
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run_server(host='0.0.0.0', port=port)
