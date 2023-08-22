@@ -13,7 +13,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 model = pickle.load(open('lgbm_optimized.pkl', 'rb'))    
 
-data = pd.read_csv("test_api.csv")
+main = ZipFile("data/main_test.zip")
+data = pd.read_csv(main.open('main_test.csv'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
