@@ -30,8 +30,11 @@ st.markdown("""
 
 @st.cache_data
 def get_data():
-    df = pd.read_csv('test_api.csv')
-    df_pie = pd.read_csv('str_api.csv')
+    main = ZipFile("data/main_test.zip")
+    df = pd.read_csv(main.open('main_test.csv'))
+
+    pie = ZipFile("data/pie_test.zip")
+    df_pie = pd.read_csv(pie.open('pie_test.csv'))
     return df, df_pie
 
 df, df_pie = get_data()
