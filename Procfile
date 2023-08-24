@@ -1,2 +1,2 @@
-web: python API/API.py
+web: sh setup.sh && streamlit run app.py
 
