@@ -17,7 +17,7 @@ model = pickle.load(open('lgbm_optimized.pkl', 'rb'))
 main = ZipFile("data/main_test.zip")
 data = pd.read_csv(main.open('main_test.csv'))
 
-@app.route('/predict', methods=['POST'])
+@app.route('https://dashboardscoringcredit.herokuapp.com/predict', methods=['POST'])
 def predict():
     try:
         input_data = request.json
