@@ -217,6 +217,6 @@ with st.sidebar:
     if st.button("Reinitialiser"):
         pyautogui.hotkey("ctrl","F5")
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8501))
-    app.run(host='0.0.0.0', port=port)
+
+port = int(os.environ.get("PORT", 8501))
+app.run(host='0.0.0.0', port=port)
