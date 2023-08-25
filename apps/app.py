@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-from API.api import app
+from API import api
 from zipfile import ZipFile
 
 api_url = "http://localhost:5001/predict"
