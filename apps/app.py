@@ -10,7 +10,7 @@ import os
 from API import api
 from zipfile import ZipFile
 
-app = api.app
+app_import = api.app
 api_url = "http://localhost:5001/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
 
@@ -218,4 +218,4 @@ if predict_button:
 
 
 port = int(os.environ.get("PORT", 8501))
-app.run(host='0.0.0.0', port=port)
+app_import.run(host='0.0.0.0', port=port)
