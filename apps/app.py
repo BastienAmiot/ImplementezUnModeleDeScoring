@@ -7,10 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-from API import api
+from API.api import app as api_app
 from zipfile import ZipFile
 
-app_import = api.app
 api_url = "http://localhost:5001/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
 
@@ -218,4 +217,4 @@ if predict_button:
 
 
 port = int(os.environ.get("PORT", 8501))
-app_import.run(host='0.0.0.0', port=port)
+api_app.run(host='0.0.0.0', port=port)
