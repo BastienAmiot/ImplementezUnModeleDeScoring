@@ -6,7 +6,6 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 import requests
-import pyautogui
 import os
 
 api_url = "http://localhost:5001/predict"
@@ -213,9 +212,6 @@ if predict_button:
 
         ''')
             
-with st.sidebar:
-    if st.button("Reinitialiser"):
-        pyautogui.hotkey("ctrl","F5")
 
 
 port = int(os.environ.get("PORT", 8501))
