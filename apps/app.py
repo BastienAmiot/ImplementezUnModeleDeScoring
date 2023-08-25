@@ -7,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-from API.api import app as api_app
 from zipfile import ZipFile
 
 api_url = "http://localhost:5001/predict"
@@ -217,4 +216,4 @@ if predict_button:
 
 
 port = int(os.environ.get("PORT", 8501))
-api_app.run(host='0.0.0.0', port=port)
+app.run(host='0.0.0.0', port=port)
