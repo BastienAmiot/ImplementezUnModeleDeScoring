@@ -208,9 +208,9 @@ if predict_button:
           <i class="fas fa-check-circle" style="color:green;"></i>
           </div>""", unsafe_allow_html=True)
           
-        else:
-          st.write("Une erreur s'est produite lors de la prédiction.")
-          st.write(response.status_code)
+      else:
+        st.write("Une erreur s'est produite lors de la prédiction.")
+        st.write(response.status_code)
             
       st.write('''
       ---
