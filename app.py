@@ -76,7 +76,7 @@ st.sidebar.markdown('''---''')
 
 if predict_button:
     try:
-        response = requests.post(api_url, json={"user_id": user_id})
+        response = app.post('/predict', json={"user_id": user_id})
 
     except:
         st.write("Une erreur s'est produite lors de l'appel à l'API.")
