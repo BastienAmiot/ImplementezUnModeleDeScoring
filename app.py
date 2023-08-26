@@ -5,9 +5,10 @@ import shap
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
-import API
 import requests
-import pyautogui
+import os
+import API import app
+from zipfile import ZipFile
 
 api_url = "http://localhost:5001/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
@@ -31,8 +32,11 @@ st.markdown("""
 
 @st.cache_data
 def get_data():
-    df = pd.read_csv('test_api.csv')
-    df_pie = pd.read_csv('str_api.csv')
+    main = ZipFile("data/main_test.zip")
+    df = pd.read_csv(main.open('main_test.csv'))
+
+    pie = ZipFile("data/pie_test.zip")
+    df_pie = pd.read_csv(pie.open('pie_test.csv'))
     return df, df_pie
 
 df, df_pie = get_data()
@@ -210,6 +214,7 @@ if predict_button:
 
         ''')
             
-with st.sidebar:
-    if st.button("Reinitialiser"):
-        pyautogui.hotkey("ctrl","F5")
+
+
+port = int(os.environ.get("PORT", 8501))
+app.run(host='0.0.0.0', port=port)
