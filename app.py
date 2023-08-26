@@ -9,6 +9,9 @@ import requests
 import os
 import API
 from zipfile import ZipFile
+from API import app as api_app
+
+app = api_app
 
 api_url = "http://localhost:5001/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
