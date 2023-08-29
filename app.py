@@ -9,10 +9,8 @@ import requests
 import os
 import API
 from zipfile import ZipFile
-from API import app
 
 
-api_url = "https://dashboardscoringcredit-4b3cd19d3108.herokuapp.com/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
 
 st.set_page_config(page_title='Analyse du profil client',
