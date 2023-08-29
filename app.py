@@ -9,7 +9,7 @@ import requests
 import os
 import API
 from zipfile import ZipFile
-#from API import app
+from API import app
 
 
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
