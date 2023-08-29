@@ -190,6 +190,8 @@ if predict_button:
     ''')
     
     with st.sidebar:
+      print(type(response))
+      print(response)
       predictions = response.json()
       st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
