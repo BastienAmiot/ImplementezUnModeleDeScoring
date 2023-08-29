@@ -9,6 +9,7 @@ import requests
 import os
 import API
 from zipfile import ZipFile
+#from API import app
 
 
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
@@ -74,10 +75,7 @@ st.sidebar.markdown('''---''')
 
 if predict_button:
     try:
-        response = app.post('/predict', json={"user_id": user_id})
-        st.write(print(type(response)))
-        st.write(print(response))
-
+        response = app.post('/predict', json={"user_id": user_id}).json()
     except:
         st.write("Une erreur s'est produite lors de l'appel à l'API.")
         
@@ -191,7 +189,7 @@ if predict_button:
 
     
     with st.sidebar:
-      predictions = response.json()
+      predictions = response
       st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
       if predictions[0] < 0.5:
