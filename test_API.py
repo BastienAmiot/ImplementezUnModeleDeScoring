@@ -2,7 +2,7 @@ import API
 import requests
 
 def test_api():
-    response = requests.post('http://localhost:5001/predict', json={"user_id": 456221})
+    response = requests.post('https://dashboardscoringcredit-4b3cd19d3108.herokuapp.com/', json={"user_id": 456221})
     assert response.status_code == 200
     predictions = response.json()
     assert isinstance(predictions, list)
