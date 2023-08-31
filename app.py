@@ -189,31 +189,25 @@ if predict_button:
 
     
     with st.sidebar:
-      if predict_button:
-        try:
-            if response.status_code == 200:
-                predictions = response.json()
-                st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
-    
-                if predictions[0] < 0.5:
-                    st.markdown("""
-                    <div style="display: flex; align-items: center;">
-                    <span style="margin-right: 10px;">Éligibilité du client :</span>
-                    <i class="fas fa-times-circle" style="color:red;"></i>
-                    </div>""", unsafe_allow_html=True)
-                else:
-                    st.markdown("""
-                    <div style="display: flex; align-items: center;">
-                    <span style="margin-right: 5px;">Éligibilité du client :</span>
-                    <i class="fas fa-check-circle" style="color:green;"></i>
-                    </div>""", unsafe_allow_html=True)
-            else:
-                st.write("Une erreur s'est produite lors de l'appel à l'API.")
-                st.write(response.status_code)
-            
-        except Exception as e:
+      if response.status_code == 200:
+          predictions = response.json()
+          st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
+  
+          if predictions[0] < 0.5:
+              st.markdown("""
+              <div style="display: flex; align-items: center;">
+              <span style="margin-right: 10px;">Éligibilité du client :</span>
+              <i class="fas fa-times-circle" style="color:red;"></i>
+              </div>""", unsafe_allow_html=True)
+          else:
+              st.markdown("""
+              <div style="display: flex; align-items: center;">
+              <span style="margin-right: 5px;">Éligibilité du client :</span>
+              <i class="fas fa-check-circle" style="color:green;"></i>
+              </div>""", unsafe_allow_html=True)
+      else:
           st.write("Une erreur s'est produite lors de l'appel à l'API.")
-          st.write(str(e))
+          st.write(response.status_code)
       st.write('''
       ---
   
