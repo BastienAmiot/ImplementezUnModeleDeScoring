@@ -11,7 +11,7 @@ import API
 from zipfile import ZipFile
 from API import app
 
-api_url = "https://apideployment-8277972adf9d.herokuapp.com/predict"
+
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
 
 st.set_page_config(page_title='Analyse du profil client',
@@ -33,11 +33,11 @@ st.markdown("""
 
 @st.cache_data
 def get_data():
-    main = ZipFile("data/test_api.zip")
-    df = pd.read_csv(main.open('test_api.csv'))
+    main = ZipFile("data/main_test.zip")
+    df = pd.read_csv(main.open('main_test.csv'))
 
-    pie = ZipFile("data/str_api.zip")
-    df_pie = pd.read_csv(pie.open('str_api.csv'))
+    pie = ZipFile("data/pie_test.zip")
+    df_pie = pd.read_csv(pie.open('pie_test.csv'))
     return df, df_pie
 
 df, df_pie = get_data()
@@ -75,7 +75,7 @@ st.sidebar.markdown('''---''')
 
 if predict_button:
     try:
-        response = app.post("/predict", json={"user_id": user_id})
+        response = app.post('/predict', json={"user_id": user_id})
     except:
         st.write("Une erreur s'est produite lors de l'appel à l'API.")
         
@@ -189,25 +189,23 @@ if predict_button:
 
     
     with st.sidebar:
-      if response.status_code == 200:
-          predictions = response.json()
-          st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
-  
-          if predictions[0] < 0.5:
-              st.markdown("""
-              <div style="display: flex; align-items: center;">
-              <span style="margin-right: 10px;">Éligibilité du client :</span>
-              <i class="fas fa-times-circle" style="color:red;"></i>
-              </div>""", unsafe_allow_html=True)
-          else:
-              st.markdown("""
-              <div style="display: flex; align-items: center;">
-              <span style="margin-right: 5px;">Éligibilité du client :</span>
-              <i class="fas fa-check-circle" style="color:green;"></i>
-              </div>""", unsafe_allow_html=True)
+      predictions = response
+      st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
+      
+      if predictions[0] < 0.5:
+        st.markdown("""
+        <div style="display: flex; align-items: center;">
+        <span style="margin-right: 10px;">Éligibilité du client :</span>
+        <i class="fas fa-times-circle" style="color:red;"></i>
+        </div>""", unsafe_allow_html=True)
+      
       else:
-          st.write("Une erreur s'est produite lors de l'appel à l'API.")
-          st.write(response.status_code)
+        st.markdown("""
+        <div style="display: flex; align-items: center;">
+        <span style="margin-right: 5px;">Éligibilité du client :</span>
+        <i class="fas fa-check-circle" style="color:green;"></i>
+        </div>""", unsafe_allow_html=True)
+            
       st.write('''
       ---
   
@@ -215,5 +213,5 @@ if predict_button:
             
 
 
-port = int(os.environ.get("PORT", 5000))
+port = int(os.environ.get("PORT", 8501))
 app.run(host='0.0.0.0', port=port)
