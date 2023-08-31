@@ -11,7 +11,6 @@ import API
 from zipfile import ZipFile
 from API import app
 
-port = int(os.environ.get("PORT", 8501))
 api_url = "https://apideployment-8277972adf9d.herokuapp.com"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
 
