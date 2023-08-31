@@ -1,3 +1,2 @@
-#web: streamlit run app.py
-web: sh setup.sh && streamlit run app.py  --client.showErrorDetails=false
+web: sh setup.sh && streamlit run app.py
 init: FLASK-APP=API.py flask init_db
