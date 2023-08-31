@@ -192,7 +192,7 @@ if predict_button:
       predictions = response
       st.write('La probabilité que le client soit solvable est de :', str(predictions))
       
-      if predictions[0] < 0.5:
+      if predictions < 0.5:
         st.markdown("""
         <div style="display: flex; align-items: center;">
         <span style="margin-right: 10px;">Éligibilité du client :</span>
