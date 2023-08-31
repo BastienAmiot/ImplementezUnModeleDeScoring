@@ -7,7 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
+import API
 from zipfile import ZipFile
+from API import app
 
 api_url = "https://apideployment-8277972adf9d.herokuapp.com/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
@@ -73,7 +75,7 @@ st.sidebar.markdown('''---''')
 
 if predict_button:
     try:
-        response = requests.post(api_url, json={"user_id": user_id})
+        response = app.post("/predict", json={"user_id": user_id})
     except:
         st.write("Une erreur s'est produite lors de l'appel à l'API.")
         
@@ -189,7 +191,6 @@ if predict_button:
     with st.sidebar:
       if predict_button:
         try:
-            response = requests.post(api_url, json={"user_id": user_id})
             if response.status_code == 200:
                 predictions = response.json()
                 st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
