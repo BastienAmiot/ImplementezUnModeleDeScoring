@@ -7,9 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-import API
 from zipfile import ZipFile
-from API import app
 
 api_url = "https://apideployment-8277972adf9d.herokuapp.com/predict"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
