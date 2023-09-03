@@ -1,6 +1,5 @@
 pytest
 gunicorn
-json
 ipython==7.27.0
 streamlit==1.25.0
 shap>=0.41.0
