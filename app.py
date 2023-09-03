@@ -7,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-import json
 import API
 from zipfile import ZipFile
 from API import app
