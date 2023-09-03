@@ -191,7 +191,6 @@ if predict_button:
     
     with st.sidebar:
       predictions = response.json()
-      logging.debug("Contenu de la réponse JSON : %s", predictions)
       st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
       if predictions[0] < 0.5:
