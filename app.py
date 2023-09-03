@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 import streamlit as st
 import plotly.express as px
@@ -189,9 +190,9 @@ if predict_button:
 
     
     with st.sidebar:
-      predictions = response
-      st.write(type(predictions))
-      #st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
+      predictions = response.json()
+      logging.debug("Contenu de la réponse JSON : %s", predictions)
+      st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
       if predictions[0] < 0.5:
         st.markdown("""
