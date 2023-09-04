@@ -191,7 +191,8 @@ if predict_button:
     with st.sidebar:
       predictions = response.json()
       #st.write('La probabilité que le client soit solvable est de :', predictions)
-      st.write(predictions)
+      pred = predictions.values()
+      print(pred)
       
       '''if predictions < 0.5:
         st.markdown("""
