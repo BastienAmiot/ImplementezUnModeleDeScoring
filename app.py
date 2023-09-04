@@ -190,11 +190,9 @@ if predict_button:
     
     with st.sidebar:
       predictions = response.json()
-      #st.write('La probabilité que le client soit solvable est de :', predictions)
-      pred = predictions.values()
-      st.write(print(pred))
+      st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
-      '''if predictions < 0.5:
+      if predictions[0] < 0.5:
         st.markdown("""
         <div style="display: flex; align-items: center;">
         <span style="margin-right: 10px;">Éligibilité du client :</span>
@@ -206,7 +204,7 @@ if predict_button:
         <div style="display: flex; align-items: center;">
         <span style="margin-right: 5px;">Éligibilité du client :</span>
         <i class="fas fa-check-circle" style="color:green;"></i>
-        </div>""", unsafe_allow_html=True)'''
+        </div>""", unsafe_allow_html=True)
             
       st.write('''
       ---
