@@ -192,7 +192,7 @@ if predict_button:
       predictions = response.json()
       #st.write('La probabilité que le client soit solvable est de :', predictions)
       pred = predictions.values()
-      print(pred)
+      st.write(print(pred))
       
       '''if predictions < 0.5:
         st.markdown("""
