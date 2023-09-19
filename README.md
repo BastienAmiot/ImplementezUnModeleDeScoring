@@ -6,7 +6,8 @@ Dans ce projet, "Prêt à dépenser" cherche à mettre en production un modèle 
 Pour se faire, de nombreux paramètres sont mis à disposition.
 Les données sont issues de Kaggle (téléchargeables à cette adresse : https://www.kaggle.com/c/home-credit-default-risk/data) et regroupent la totalité des paramètres constituant le profil d'un client en plusieurs datasets.
 
-![image](https://github.com/BastienAmiot/ImplementezUnModeleDeScoring/assets/139744720/2cee76d4-4715-48e4-9427-d8d4f145d8d7)
+![image](https://github.com/BastienAmiot/ImplementezUnModeleDeScoring/assets/139744720/1d9d88c3-46f6-4b0a-ad94-bdce85121129)
+
 
 ## Outils et dépendances
 
