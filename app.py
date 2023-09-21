@@ -7,9 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import os
-import API
 from zipfile import ZipFile
-from API import app
 
 api_url = "https://apideployment-8277972adf9d.herokuapp.com"
 model = pickle.load(open('lgbm_optimized.pkl', 'rb')) 
@@ -192,7 +190,7 @@ if predict_button:
       predictions = response.json()
       st.write('La probabilité que le client soit solvable est de :', str("{:.4f}".format(predictions[0])))
       
-      if predictions[0] < 0.5:
+      if predictions[0] < 0.8:
         st.markdown("""
         <div style="display: flex; align-items: center;">
         <span style="margin-right: 10px;">Éligibilité du client :</span>
