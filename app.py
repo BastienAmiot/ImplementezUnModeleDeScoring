@@ -208,8 +208,3 @@ if predict_button:
       ---
   
       ''')
-            
-
-
-#port = int(os.environ.get("PORT", 8501))
-#app.run(host='0.0.0.0', port=port)
